@@ -1,1 +1,114 @@
-<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n    <meta charset=\"UTF-8\">\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n    <meta name=\"description\" content=\"Welcome to Leo AI - Your AI Assistant\">\n    <link href=\"https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css\" rel=\"stylesheet\">\n    <link rel=\"stylesheet\" href=\"https://unpkg.com/lucide@latest/dist/lucide.umd.js\">\n    <title>Leo AI Landing Page</title>\n</head>\n<body class=\"bg-gray-100\">\n    <header class=\"bg-white shadow\">\n        <div class=\"container mx-auto px-4 py-5\">\n            <h1 class=\"text-4xl font-bold text-center\">Welcome to Leo AI</h1>\n        </div>\n    </header>\n    <main class=\"container mx-auto px-4 py-10\">\n        <section class=\"text-center\">\n            <h2 class=\"text-2xl font-semibold\">Your AI Assistant for Everything</h2>\n            <p class=\"mt-4 text-gray-600\">Experience the power of AI at your fingertips.</p>\n            <button id=\"getStarted\" class=\"mt-6 px-5 py-3 bg-blue-500 text-white rounded hover:bg-blue-600\">Get Started</button>\n        </section>\n    </main>\n    <footer class=\"bg-white py-5\">\n        <div class=\"container mx-auto text-center\">\n            <p>© 2026 Leo AI. All Rights Reserved.</p>\n        </div>\n    </footer>\n    <script>\n        document.getElementById('getStarted').addEventListener('click', function() {\n            alert('Getting started with Leo AI!');\n        });\n    <\/script>\n</body>\n</html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Leo AI Landing Page</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="script.js" defer></script>
+</head>
+<body>
+    <header class="navbar">
+        <nav>
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#upload">Upload</a></li>
+                <li><a href="#dashboard">Dashboard</a></li>
+                <li><a href="#features">Features</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+    <section id="hero">
+        <h1>Welcome to Leo AI</h1>
+        <p>Your AI-powered learning assistant.</p>
+    </section>
+    <section id="upload">
+        <h2>Upload Your Files</h2>
+        <div class="tabs">
+            <button class="tab-button active" data-tab="pdf">PDF</button>
+            <button class="tab-button" data-tab="video">Video</button>
+            <button class="tab-button" data-tab="audio">Audio</button>
+            <button class="tab-button" data-tab="text">Text</button>
+        </div>
+        <div class="tab-content">
+            <div class="tab pdf active">
+                <input type="file" accept=".pdf" />
+            </div>
+            <div class="tab video">
+                <input type="file" accept=".mp4,.avi" />
+            </div>
+            <div class="tab audio">
+                <input type="file" accept=".mp3,.wav" />
+            </div>
+            <div class="tab text">
+                <input type="file" accept=".txt" />
+            </div>
+        </div>
+    </section>
+    <section id="dashboard">
+        <h2>Your Study Dashboard</h2>
+        <div class="notes-view">
+            <h3>Notes</h3>
+            <div id="notes-container"></div>
+        </div>
+        <div class="flashcards">
+            <h3>Flashcards</h3>
+            <div class="flashcard" onclick="flipCard(this)">
+                <div class="front">Question?</div>
+                <div class="back">Answer!</div>
+            </div>
+        </div>
+    </section>
+    <section id="quiz">
+        <h2>Practice Quiz</h2>
+        <form id="quiz-form">
+            <!-- Quiz questions will be dynamically generated here -->
+            <button type="submit">Submit</button>
+        </form>
+        <div id="quiz-score"></div>
+    </section>
+    <section id="ai-tutor">
+        <h2>AI Tutor Chat</h2>
+        <div class="chat-container"></div>
+        <input type="text" id="chat-input" placeholder="Ask your question..." />
+    </section>
+    <section id="features">
+        <h2>Features</h2>
+        <div class="features-grid">
+            <div class="feature">Feature 1</div>
+            <div class="feature">Feature 2</div>
+            <div class="feature">Feature 3</div>
+            <div class="feature">Feature 4</div>
+        </div>
+    </section>
+    <footer>
+        <p>&copy; 2026 Leo AI</p>
+    </footer>
+</body>
+</html>
+
+// JavaScript functionality below
+
+const tabButtons = document.querySelectorAll('.tab-button');
+const tabs = document.querySelectorAll('.tab');
+
+tabButtons.forEach(button => {
+    button.addEventListener('click', () => {
+        const tabId = button.getAttribute('data-tab');
+        tabButtons.forEach(btn => btn.classList.remove('active'));
+        tabs.forEach(tab => {
+            tab.classList.remove('active');
+            if(tab.classList.contains(tabId)) {
+                tab.classList.add('active');
+            }
+        });
+        button.classList.add('active');
+    });
+});
+
+function flipCard(card) {
+    card.classList.toggle('flipped');
+}
+
+// Add more JavaScript functionalities for scoring, chat interface, animations, etc.
